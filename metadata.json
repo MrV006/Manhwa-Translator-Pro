@@ -1,0 +1,5 @@
+{
+  "name": "Manhwa Translator Pro",
+  "description": "A web application to extract, translate, and export Manhwa/Manga chapters to Persian PDF using Gemini AI.",
+  "requestFramePermissions": []
+}
