@@ -13,6 +13,9 @@ interface ErrorBoundaryProps { children?: ReactNode; }
 interface ErrorBoundaryState { hasError: boolean; }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  // Fix: Explicitly declare props to avoid TypeScript error 'Property props does not exist on type ErrorBoundary'
+  declare props: Readonly<ErrorBoundaryProps>;
+
   state: ErrorBoundaryState = { hasError: false };
 
   static getDerivedStateFromError(error: any) { return { hasError: true }; }

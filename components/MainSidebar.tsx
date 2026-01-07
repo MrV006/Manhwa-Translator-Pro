@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Settings, Key, Hash, FileText, RefreshCw, Book, Menu, X, ChevronRight, Zap } from 'lucide-react';
+import { BookOpen, Settings, Key, Hash, FileText, RefreshCw, Book, Menu, X, ChevronRight, Zap, Code } from 'lucide-react';
 import { Genre } from '../types';
 
 interface Props {
@@ -50,10 +50,13 @@ export const MainSidebar: React.FC<Props> = ({
         {/* Header */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-slate-700 bg-slate-800/50">
           <div className="flex items-center gap-2">
-            <div className="bg-gradient-to-tr from-primary to-purple-600 p-1.5 rounded-lg">
+            <div className="bg-gradient-to-tr from-primary to-purple-600 p-1.5 rounded-lg shadow-lg shadow-primary/20">
               <BookOpen className="text-white" size={20} />
             </div>
-            <h1 className="font-bold text-slate-100 tracking-tight">مترجم مانهوا <span className="text-primary text-[10px] align-top">PRO</span></h1>
+            <div>
+                <h1 className="font-bold text-slate-100 tracking-tight leading-none">مترجم مانهوا</h1>
+                <span className="text-[10px] text-primary font-bold tracking-widest">PRO EDITION</span>
+            </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
             <X size={20} />
@@ -150,19 +153,29 @@ export const MainSidebar: React.FC<Props> = ({
 
         </div>
 
-        {/* Footer Actions */}
-        <div className="p-4 border-t border-slate-700 bg-slate-900">
-           <button 
-             onClick={() => {
-                if(window.confirm('آیا از شروع مجدد اطمینان دارید؟ تمام تغییرات فعلی حذف خواهند شد.')) {
-                    onReset();
-                }
-             }}
-             className="w-full flex items-center justify-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg text-sm transition-colors"
-           >
-             <RefreshCw size={16} />
-             شروع مجدد / پروژه جدید
-           </button>
+        {/* Footer Actions & Branding */}
+        <div className="border-t border-slate-700 bg-slate-900 flex flex-col">
+           <div className="p-4 pb-2">
+                <button 
+                    onClick={() => {
+                        if(window.confirm('آیا از شروع مجدد اطمینان دارید؟ تمام تغییرات فعلی حذف خواهند شد.')) {
+                            onReset();
+                        }
+                    }}
+                    className="w-full flex items-center justify-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-4 py-2.5 rounded-lg text-sm transition-colors mb-4"
+                >
+                    <RefreshCw size={16} />
+                    شروع مجدد / پروژه جدید
+                </button>
+           </div>
+           
+           {/* Mr.V Branding Signature */}
+           <div className="py-3 bg-black/20 text-center border-t border-slate-800">
+               <div className="flex items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-default group">
+                   <Code size={12} className="text-primary"/>
+                   <span className="text-[10px] text-slate-400 font-mono">Developed by <span className="text-primary font-bold group-hover:text-white transition-colors">Mr.V</span></span>
+               </div>
+           </div>
         </div>
       </aside>
     </>
